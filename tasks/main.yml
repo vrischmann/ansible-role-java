@@ -7,5 +7,5 @@
 
 - name: Install Java
   tags: java
-  apt: pkg=oracle-java{{ item }}-installer update-cache=yes state=latest
+  apt: pkg=oracle-{{ item }}-installer update-cache=yes state=latest
   with_items: java_versions

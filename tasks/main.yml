@@ -1,11 +1,6 @@
 ---
-- include: webupd8.yml
+- include: oracle.yml
+  when: java_versions is defined and java_versions is sequence and join(java_versions)|search("oracle")
 
-- name: Automatically select the Oracle License
-  tags: java
-  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-
-- name: Install Java
-  tags: java
-  apt: pkg=oracle-{{ item }}-installer update-cache=yes state=latest
-  with_items: java_versions
+- include: openjdk.yml
+  when: java_versions is defined and java_versions is sequence and join(java_versions)|search("openjdk")

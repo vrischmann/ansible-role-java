@@ -8,6 +8,11 @@ By default Debian and Ubuntu only provide OpenJDK, but sometimes you may want to
 
 This uses the Ubuntu PPA maintained by [Webupd8](http://www.webupd8.org/). It works without problems on Debian too.
 
+License
+-------
+
+This project is released under the MIT license (see the LICENSE file).
+
 How to use
 ----------
 

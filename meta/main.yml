@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Vincent Rischmann
+  description: Ansible playbook to install the official Oracle JRE/JDK.
+  license: MIT
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - precise
+  - name: Debian
+    versions:
+    - squeeze
+    - wheezy
+  categories:
+  - system
+dependencies: []

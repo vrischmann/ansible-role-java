@@ -1,6 +1,26 @@
 ---
-- include: oracle.yml
+- name: Add the webupd8 APT repository key
+  tags:
+    - java
+    - java-webupd8
+  # Use a static file because right now using just an ID fails
+  apt_key: data="{{ lookup('file', 'webupd8.key.asc') }}" state=present
   when: java_versions is defined and java_versions is sequence and java_versions|join|search("oracle")
 
-- include: openjdk.yml
-  when: java_versions is defined and java_versions is sequence and java_versions|join|search("openjdk")
+- name: Add the webupd8 APT repository
+  tags:
+    - java
+    - java-webupd8
+  apt_repository: repo="deb http://ppa.launchpad.net/webupd8team/java/ubuntu precise main" state=present
+  when: java_versions is defined and java_versions is sequence and java_versions|join|search("oracle")
+
+- name: Automatically select the Oracle License
+  tags: java
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+  when: java_versions is defined and java_versions is sequence and java_versions|join|search("oracle")
+  changed_when: false
+
+- name: Install Java
+  tags: java
+  apt: pkg={{ item }} update-cache=yes state=latest
+  with_items: "{{ java_versions }}"

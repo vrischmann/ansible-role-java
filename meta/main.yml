@@ -8,11 +8,19 @@ galaxy_info:
   - name: Ubuntu
     versions:
     - precise
+    - trusty
+    - utopic
+    - vivid
+    - wily
+    - xenial
+    - yakkety
   - name: Debian
     versions:
     - squeeze
     - wheezy
     - jessie
-  categories:
+    - testing
+  galaxy_tags:
   - system
+  - java
 dependencies: []

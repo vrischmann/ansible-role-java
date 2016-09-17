@@ -13,13 +13,11 @@ galaxy_info:
     - vivid
     - wily
     - xenial
-    - yakkety
   - name: Debian
     versions:
     - squeeze
     - wheezy
     - jessie
-    - testing
   galaxy_tags:
   - system
   - java
